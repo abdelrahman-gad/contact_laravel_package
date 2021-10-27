@@ -1,6 +1,6 @@
 <?php
 
-namespace Gad\Contact;
+namespace Gad\Contact\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -31,7 +31,7 @@ class ContactMailable extends Mailable
      */
     public function build()
     {
-        return $this->markdown('contact.email')->with(['message'=>$this->message,'name'=>$this->name]);
+        return $this->markdown('contact::contact.email')->with(['message'=>$this->message,'name'=>$this->name]);
     }
 }
  

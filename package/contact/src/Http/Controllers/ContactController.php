@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Gad\Contact\Models;
 use Gad\Contact\Models\Contact;
 use Illuminate\Support\Facades\Mail;
-use Gad\Contact\ContactMailable;
+use Gad\Contact\Mail\ContactMailable;
 class ContactController extends Controller{
 
   public function index(){
@@ -17,7 +17,7 @@ class ContactController extends Controller{
 
   public function send(Request $request){
 
-       Mail::to('abdelrahmangad95@gmail.com')->send(new ContactMailable($request->message,$request->name));
+       Mail::to(config('contact.send_to_email'))->send(new ContactMailable($request->message,$request->name));
        Contact::create($request->all());
        return redirect(route('contact'));
   }
