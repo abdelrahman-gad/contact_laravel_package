@@ -12,6 +12,8 @@ class ContactServiceProvider extends ServiceProvider{
             __DIR__ . '/config/contact.php',
             'contact'
         );
+
+        // connect package configuration with the laravel app 
         $this->publishes([
             __DIR__ . '/config/contact.php' => config_path('contact.php')
         ]);
